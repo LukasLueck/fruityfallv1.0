@@ -42,7 +42,7 @@ public class App extends Application {
         imageView.setFitHeight(newHeight);
 
         // Button hinzufügen
-        Button button = new Button("START THE GAME");
+        Button button = new Button("START GAME");
         vbox.getChildren().add(button);
 
         StackPane root = new StackPane(vbox);
@@ -56,7 +56,7 @@ public class App extends Application {
         button.setOnAction(e -> handleButtonClicked());
 
         // Programm beenden Button hinzufügen
-        Button exitButton = new Button("SPIEL BEENDEN");
+        Button exitButton = new Button("EXIT GAME");
         StackPane.setAlignment(exitButton, Pos.TOP_LEFT);
         root.getChildren().add(exitButton);
 
@@ -66,10 +66,31 @@ public class App extends Application {
 
     // Methode zum Behandeln des Button-Klicks
     private void handleButtonClicked() {
-
         // Neue Scene erstellen
         StackPane newRoot = new StackPane();
         newRoot.setBackground(createBackground());
+
+        // Bilder im Voraus laden
+        Image image1 = new Image("spieler1.png");
+        Image image2 = new Image("spieler2.png");
+
+        // ImageView-Komponenten erstellen und mit den Bildern initialisieren
+        ImageView imageView1 = new ImageView(image1);
+        ImageView imageView2 = new ImageView(image2);
+
+        // Größe der Bilder anpassen
+        double newWidth1 = 200; // Neue Breite der Bilder
+        double newHeight1 = 100; // Neue Höhe der Bilder
+        imageView1.setFitWidth(newWidth1);
+        imageView1.setFitHeight(newHeight1);
+        imageView2.setFitWidth(newWidth1);
+        imageView2.setFitHeight(newHeight1);
+
+        // HBox für Bilder erstellen
+        HBox imageBox = new HBox();
+        imageBox.setAlignment(Pos.CENTER);
+        imageBox.setSpacing(10);
+        imageBox.getChildren().addAll(imageView1, imageView2);
 
         // Eingabefelder hinzufügen
         TextField textField1 = new TextField();
@@ -82,14 +103,14 @@ public class App extends Application {
         inputBox.getChildren().addAll(textField1, textField2);
 
         // Button hinzufügen
-        Button submitButton = new Button("Submit");
+        Button submitButton = new Button("SPIELEN WIR!");
         submitButton.setOnAction(e -> handleFormSubmission(textField1.getText(), textField2.getText()));
 
-        // VBox für Eingabefelder und Button erstellen
+        // VBox für Eingabefelder, Bilder und Button erstellen
         VBox vbox = new VBox();
         vbox.setAlignment(Pos.CENTER);
         vbox.setSpacing(10);
-        vbox.getChildren().addAll(inputBox, submitButton);
+        vbox.getChildren().addAll(imageBox, inputBox, submitButton);
 
         // Logo hinzufügen
         Image logoImage = new Image("fruityfall_logo.png");
@@ -124,7 +145,7 @@ public class App extends Application {
 
     // Methode zum Erstellen des Hintergrundes
     private Background createBackground() {
-        Image backgroundImage = new Image("background.png");
+        Image backgroundImage = new Image("background_new.png");
         BackgroundSize backgroundSize = new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, false);
         BackgroundImage backgroundImg = new BackgroundImage(backgroundImage, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
         return new Background(backgroundImg);
