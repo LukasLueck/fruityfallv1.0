@@ -12,6 +12,7 @@ import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 public class App extends Application {
@@ -65,7 +66,7 @@ public class App extends Application {
 
     // Methode zum Behandeln des Button-Klicks
     private void handleButtonClicked() {
-        
+
         // Neue Scene erstellen
         StackPane newRoot = new StackPane();
         newRoot.setBackground(createBackground());
@@ -74,17 +75,40 @@ public class App extends Application {
         TextField textField1 = new TextField();
         TextField textField2 = new TextField();
 
+        // HBox für Eingabefelder erstellen
+        HBox inputBox = new HBox();
+        inputBox.setAlignment(Pos.CENTER);
+        inputBox.setSpacing(10);
+        inputBox.getChildren().addAll(textField1, textField2);
+
+        // Button hinzufügen
+        Button submitButton = new Button("Submit");
+        submitButton.setOnAction(e -> handleFormSubmission(textField1.getText(), textField2.getText()));
+
+        // VBox für Eingabefelder und Button erstellen
         VBox vbox = new VBox();
         vbox.setAlignment(Pos.CENTER);
         vbox.setSpacing(10);
-        vbox.getChildren().addAll(textField1, textField2);
+        vbox.getChildren().addAll(inputBox, submitButton);
+
+        // Logo hinzufügen
+        Image logoImage = new Image("fruityfall_logo.png");
+        ImageView logoImageView = new ImageView(logoImage);
+        newRoot.getChildren().add(logoImageView);
+        StackPane.setAlignment(logoImageView, Pos.TOP_CENTER);
+        // Bildgröße anpassen
+        double newWidth = 400; // Neue Breite des Bildes
+        double newHeight = 150; // Neue Höhe des Bildes
+        logoImageView.setFitWidth(newWidth);
+        logoImageView.setFitHeight(newHeight);
 
         newRoot.getChildren().add(vbox);
         StackPane.setAlignment(vbox, Pos.CENTER);
 
+        // Startbildschirm Button hinzufügen
         Button backButton = new Button("zurück zum Startbildschirm");
         newRoot.getChildren().add(backButton);
-        StackPane.setAlignment(backButton, Pos.TOP_LEFT);
+        StackPane.setAlignment(backButton, Pos.BOTTOM_LEFT);
 
         newScene = new Scene(newRoot, 500, 500);
         primaryStage.setScene(newScene);
@@ -109,6 +133,14 @@ public class App extends Application {
     // Methode zum Behandeln des Exit-Button-Klicks
     private void handleExitButtonClicked() {
         primaryStage.close();
+    }
+
+    // Methode zum Behandeln des Formular-Submit
+    private void handleFormSubmission(String input1, String input2) {
+        // Hier kannst du den Code für die Verarbeitung der Formulardaten hinzufügen
+        // Zum Beispiel: Speichern der Daten in einer Datenbank oder Ausführen von weiteren Aktionen
+        System.out.println("Spieler 1: " + input1);
+        System.out.println("Spieler 2: " + input2);
     }
 
     public static void main(String[] args) {
