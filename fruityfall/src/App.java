@@ -137,8 +137,6 @@ public class App extends Application {
 
     // Methode zum Behandeln des Formular-Submit
     private void handleFormSubmission(String input1, String input2) {
-        // Hier kannst du den Code für die Verarbeitung der Formulardaten hinzufügen
-        // Zum Beispiel: Speichern der Daten in einer Datenbank oder Ausführen von weiteren Aktionen
         System.out.println("Spieler 1: " + input1);
         System.out.println("Spieler 2: " + input2);
     }
