@@ -5,6 +5,10 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -28,17 +32,17 @@ public class App extends Application {
         vbox.setAlignment(Pos.CENTER);
         vbox.setSpacing(10);
 
-        // Bild einfügen
+        // Logo einfügen
         Image image = new Image("fruityfall_logo.png");
         ImageView imageView = new ImageView(image);
         vbox.getChildren().add(imageView);
-        // Bildgröße anpassen
+        // Logo Bildgröße anpassen
         double newWidth = 400; // Neue Breite des Bildes
         double newHeight = 150; // Neue Höhe des Bildes
         imageView.setFitWidth(newWidth);
         imageView.setFitHeight(newHeight);
 
-        // Button hinzufügen
+        // Start-Button hinzufügen
         Button button = new Button("START THE GAME");
         vbox.getChildren().add(button);
 
