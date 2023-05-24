@@ -1,17 +1,46 @@
 import javafx.application.Application;
-import javafx.stage.Stage;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) {
         primaryStage.setTitle("FruityFall v1.0");
-        
+
+        // Fensterfarbe ändern
         StackPane root = new StackPane();
+        root.setStyle("-fx-background-color: orange;");
+
+        // VBox erstellen
+        VBox vbox = new VBox();
+        vbox.setAlignment(Pos.CENTER);
+        vbox.setSpacing(10);
+
+        // Bild einfügen
+        Image image = new Image("fruityfall_logo.png");
+        ImageView imageView = new ImageView(image);
+        vbox.getChildren().add(imageView);
+        // Bildgröße anpassen
+        double newWidth = 400; // Neue Breite des Bildes
+        double newHeight = 150; // Neue Höhe des Bildes
+        imageView.setFitWidth(newWidth);
+        imageView.setFitHeight(newHeight);
+
+        // Button hinzufügen
+        Button button = new Button("START THE GAME");
+        vbox.getChildren().add(button);
+
+        root.getChildren().add(vbox);
+        StackPane.setAlignment(vbox, Pos.CENTER);
+
         Scene scene = new Scene(root, 600, 500);
-        
         primaryStage.setScene(scene);
         primaryStage.show();
     }
