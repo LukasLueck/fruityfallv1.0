@@ -31,7 +31,7 @@ public class App extends Application {
         vbox.setAlignment(Pos.CENTER);
         vbox.setSpacing(10);
 
-        // Bild einfügen
+        // Logo Fruity Bild einfügen
         Image image = new Image("fruityfall_logo.png");
         ImageView imageView = new ImageView(image);
         vbox.getChildren().add(imageView);
@@ -41,7 +41,7 @@ public class App extends Application {
         imageView.setFitWidth(newWidth);
         imageView.setFitHeight(newHeight);
 
-        // Button hinzufügen
+        // Start Button hinzufügen
         Button button = new Button("START GAME");
         vbox.getChildren().add(button);
 
@@ -52,7 +52,7 @@ public class App extends Application {
         primaryStage.setScene(mainScene);
         primaryStage.show();
 
-        // Ereignislistener für Button hinzufügen
+        // Ereignislistener für Start Button hinzufügen
         button.setOnAction(e -> handleButtonClicked());
 
         // Programm beenden Button hinzufügen
@@ -66,7 +66,7 @@ public class App extends Application {
 
     // Methode zum Behandeln des Button-Klicks
     private void handleButtonClicked() {
-        // Neue Scene erstellen
+        // Neue Scene erstellen, Szene für Spieler Eingabe
         StackPane newRoot = new StackPane();
         newRoot.setBackground(createBackground());
 
